@@ -112,4 +112,4 @@ def run_trustpilot_experiment(
 
 if __name__ == "__main__":
     EPSILONS = [10.0, 50.0, 250.0]
-    run_trustpilot_experiment(EPSILONS, n_examples=3)
+    run_trustpilot_experiment(EPSILONS, n_examples=5)
