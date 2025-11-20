@@ -231,6 +231,6 @@ def run_amazon_experiments(
 
 
 if __name__ == "__main__":
-    EPSILONS = [10.0, 25.0, 50.0, 100.0, 250.0]
-    cfg = AmazonConfig(n_examples=200, seed=42)
+    EPSILONS = [10.0, 50.0, 250.0]
+    cfg = AmazonConfig(n_examples=1, seed=42)
     run_amazon_experiments(EPSILONS, cfg)
