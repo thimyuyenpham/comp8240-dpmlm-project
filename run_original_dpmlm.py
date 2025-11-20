@@ -24,7 +24,7 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def prepare_trustpilot_subset(n_examples: int = 5, seed: int = 42) -> pd.DataFrame:
+def prepare_trustpilot_subset(n_examples: int = 50, seed: int = 42) -> pd.DataFrame:
     """Load a small, reproducible subset of Trustpilot reviews."""
     ds = load_dataset("Kerassy/trustpilot-reviews-123k", split="train")
     ds = ds.shuffle(seed=seed).select(range(n_examples))
@@ -112,4 +112,4 @@ def run_trustpilot_experiment(
 
 if __name__ == "__main__":
     EPSILONS = [10.0, 50.0, 250.0]
-    run_trustpilot_experiment(EPSILONS)
+    run_trustpilot_experiment(EPSILONS, n_examples=1)
