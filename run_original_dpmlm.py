@@ -65,7 +65,7 @@ def run_trustpilot_experiment(
             dp,
             df["review"].tolist(),
             epsilon=eps,
-            max_tokens=256,
+            max_tokens=128,
         )
         df[f"text_dp_eps_{int(eps)}"] = priv_texts
 
@@ -112,4 +112,4 @@ def run_trustpilot_experiment(
 
 if __name__ == "__main__":
     EPSILONS = [10.0, 50.0, 250.0]
-    run_trustpilot_experiment(EPSILONS, n_examples=1)
+    run_trustpilot_experiment(EPSILONS, n_examples=5)
