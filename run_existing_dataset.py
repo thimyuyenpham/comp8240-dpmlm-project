@@ -147,5 +147,5 @@ def run_amazon_plain_experiments(
 
 if __name__ == "__main__":
     EPSILONS = [10.0, 50.0, 250.0]
-    cfg = AmazonPlainConfig(n_examples=3, seed=42)
+    cfg = AmazonPlainConfig(n_examples=5, seed=42)
     run_amazon_plain_experiments(EPSILONS, cfg)
