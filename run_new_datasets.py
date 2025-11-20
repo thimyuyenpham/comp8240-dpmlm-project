@@ -144,7 +144,7 @@ def run_amazon_experiments(
             dp,
             df["text_with_pii"].tolist(),
             epsilon=eps,
-            max_tokens=256,
+            max_tokens=128,
         )
 
         token_len_after = [len((t or "").split()) for t in priv_texts]
@@ -232,5 +232,5 @@ def run_amazon_experiments(
 
 if __name__ == "__main__":
     EPSILONS = [10.0, 50.0, 250.0]
-    cfg = AmazonConfig(n_examples=1, seed=42)
+    cfg = AmazonConfig(n_examples=5, seed=42)
     run_amazon_experiments(EPSILONS, cfg)
