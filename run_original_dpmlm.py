@@ -54,6 +54,12 @@ def run_trustpilot_experiment(
 ) -> None:
     """Rewrite Trustpilot reviews for several epsilons and save metrics."""
     df = prepare_trustpilot_subset(n_examples=n_examples, seed=seed)
+
+    # Save the CLEAN subset to data/
+    subset_path = DATA_DIR / "trustpilot_subset.csv"
+    df.to_csv(subset_path, index=False)
+    print(f"Saved clean Trustpilot subset to {subset_path}")
+
     dp = load_dpmlm(DPMLMConfig())
 
     metrics_rows = []
@@ -99,14 +105,15 @@ def run_trustpilot_experiment(
             }
         )
 
-    df_path = DATA_DIR / "trustpilot_sample_with_dp.csv"
-    df.to_csv(df_path, index=False)
+    # Save the DP-augmented dataframe (original + rewrites + per-example metrics) to results/
+    dp_per_example_path = RESULTS_DIR / "trustpilot_sample_with_dp.csv"
+    df.to_csv(dp_per_example_path, index=False)
+    print(f"Saved Trustpilot per-example DP results to {dp_per_example_path}")
 
+    # Save the summary metrics to results/ 
     metrics_df = pd.DataFrame(metrics_rows)
     metrics_path = RESULTS_DIR / "trustpilot_metrics.csv"
     metrics_df.to_csv(metrics_path, index=False)
-
-    print(f"Saved Trustpilot subset to {df_path}")
     print(f"Saved Trustpilot summary metrics to {metrics_path}")
 
 
