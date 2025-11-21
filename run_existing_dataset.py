@@ -138,7 +138,7 @@ def run_amazon_plain_experiments(
     metrics_df.to_csv(metrics_path, index=False)
 
     per_example_df = pd.concat(all_rows, ignore_index=True)
-    per_example_path = RESULTS_DIR / "amazon_sample_with_dp.csv"
+    per_example_path = RESULTS_DIR / "amazon_with_dp.csv"
     per_example_df.to_csv(per_example_path, index=False)
 
     print(f"Saved Amazon plain metrics to {metrics_path}")
