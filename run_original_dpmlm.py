@@ -106,7 +106,7 @@ def run_trustpilot_experiment(
         )
 
     # Save the DP-augmented dataframe (original + rewrites + per-example metrics) to results/
-    dp_per_example_path = RESULTS_DIR / "trustpilot_sample_with_dp.csv"
+    dp_per_example_path = RESULTS_DIR / "trustpilot_with_dp.csv"
     df.to_csv(dp_per_example_path, index=False)
     print(f"Saved Trustpilot per-example DP results to {dp_per_example_path}")
 
