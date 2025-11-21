@@ -223,7 +223,7 @@ def run_amazon_experiments(
     metrics_df.to_csv(metrics_path, index=False)
 
     all_df = pd.concat(all_rows, ignore_index=True)
-    per_example_path = RESULTS_DIR / "amazon_pii_per_example.csv"
+    per_example_path = RESULTS_DIR / "amazon_pii_with_dp.csv"
     all_df.to_csv(per_example_path, index=False)
 
     print(f"Saved Amazon summary metrics to {metrics_path}")
