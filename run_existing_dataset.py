@@ -27,7 +27,7 @@ RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
 @dataclass
 class AmazonPlainConfig:
-    n_examples: int = 3   # how many Amazon reviews to rewrite
+    n_examples: int = 5   # how many Amazon reviews to rewrite
     seed: int = 42
 
 
@@ -46,7 +46,7 @@ def prepare_amazon_plain(cfg: AmazonPlainConfig) -> pd.DataFrame:
         }
     )
 
-    out_path = DATA_DIR / "amazon_plain_subset.csv"
+    out_path = DATA_DIR / "amazon_subset.csv"
     df.to_csv(out_path, index=False)
     print(f"Saved Amazon plain subset to {out_path}")
     return df
@@ -134,11 +134,11 @@ def run_amazon_plain_experiments(
         all_rows.append(df_eps)
 
     metrics_df = pd.DataFrame(metrics_rows)
-    metrics_path = RESULTS_DIR / "amazon_plain_metrics.csv"
+    metrics_path = RESULTS_DIR / "amazon_metrics.csv"
     metrics_df.to_csv(metrics_path, index=False)
 
     per_example_df = pd.concat(all_rows, ignore_index=True)
-    per_example_path = RESULTS_DIR / "amazon_plain_per_example.csv"
+    per_example_path = RESULTS_DIR / "amazon_sample_with_dp.csv"
     per_example_df.to_csv(per_example_path, index=False)
 
     print(f"Saved Amazon plain metrics to {metrics_path}")
